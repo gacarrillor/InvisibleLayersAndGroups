@@ -1,0 +1,35 @@
+; the next section is mandatory
+[general]
+name=Invisible layers and groups
+description=Make some layers and groups invisible in the QGIS Layer Tree (aka ToC).
+about=Make some layers and groups invisible in the QGIS Layer Tree (aka ToC). E.g., lookup tables. Recommendation: Use it on top-level layers/groups, i.e., not on sublayers/subgroups.
+version=1.0
+qgisMinimumVersion=2.0
+
+; not used yet, will allow to put a plugin in the right menu
+category=Plugins
+
+author=Germán Carrillo (GeoTux)
+email=gcarrillo@linuxmail.org
+
+; end of mandatory metadata
+
+; start of optional metadata
+
+changelog=
+  [1.0] (20170303)
+   - First version.
+
+; tags are in comma separated value format, spaces are allowed
+tags=layer,layers,hide,hidden,invisible,vector,raster,layer tree,toc,legend,lookup,group,table
+
+homepage=https://github.com/gacarrillor/InvisibleLayersAndGroups
+tracker=https://github.com/gacarrillor/InvisibleLayersAndGroups/issues
+repository=https://github.com/gacarrillor/InvisibleLayersAndGroups
+
+
+; path to a icon within the plugin folder
+icon=hide.png
+
+experimental=False
+deprecated=False
