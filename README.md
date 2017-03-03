@@ -35,4 +35,16 @@ You could even keep adding layers/groups programatically to the Black-hole-group
     blackHole.insertLayer( 0, myLayer ) # myLayer will be invisible too!
 
 
+###Making a layer invisible (by code):
+
+    if 'InvisibleLayersAndGroups' in qgis.utils.plugins:
+        ilg = qgis.utils.plugins['InvisibleLayersAndGroups']
+        ilg.hideLayer( layer )    # layer is a QgsMapLayer
+
+###Making a group invisible (by code):
+
+    if 'InvisibleLayersAndGroups' in qgis.utils.plugins:
+        ilg = qgis.utils.plugins['InvisibleLayersAndGroups']
+        ilg.hideGroup( group )    # group is a QgsLayerTreeGroup
+        ilg.hideGroup( 'group2' ) # You can also pass a group name
 
