@@ -1,7 +1,7 @@
 # Invisible layers and groups
 QGIS plugin to make some layers and groups invisible in the QGIS Layer Tree (aka ToC). E.g., lookup tables.
 
-Invisible layers/groups will not appear in the Layers Panel, but they can be still be seen in the canvas or used in joins/relations with other layers.
+Invisible layers/groups will not appear in the Layers Panel, but they can still be seen in the canvas or used in joins/relations with other layers.
 
 This plugin allows you to:
 
