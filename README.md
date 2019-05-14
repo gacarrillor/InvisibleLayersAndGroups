@@ -1,5 +1,5 @@
 # Invisible layers and groups
-QGIS plugin to make some layers and groups invisible in the QGIS Layer Tree (aka ToC). E.g., lookup tables.
+QGIS plugin to make some layers and groups invisible in the QGIS Layer Tree (aka Layers panel). E.g., domain tables.
 
 **Invisible layers/groups will not appear in the Layers Panel, but they can still be seen in the canvas or used in joins/relations with other layers.**
 
@@ -14,7 +14,7 @@ This plugin allows you to:
  - Make a particular group invisible (by code).
 
 
-*NOTE: There is an issue you should be aware of. If you make a layer invisible and then move its parent group, the invisible layer will be visible again (I don't know why!). My recommendation is to make only top-level layers/groups invisible (after all, you cannot move the root).*
+*NOTE: There is an issue you should be aware of. If you make a layer invisible and then move its parent group, the invisible layer will be visible again. My recommendation is to make only top-level layers/groups invisible (after all, you cannot move the root).*
 
 For example, you could have a 'black hole' group where you put all layers/groups that should be invisible. 
 

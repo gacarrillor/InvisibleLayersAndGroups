@@ -2,7 +2,7 @@
 /***************************************************************************
  InvisibleLayersAndGroups
                              A QGIS plugin
- Make some layers and groups invisible in the QGIS Layer Tree (aka ToC).
+ Make some layers and groups invisible in the QGIS Layer Tree (aka Layers panel).
                              -------------------
         begin                : 2017-03-01
         copyright            : (C) 2017 by German Carrillo, GeoTux
@@ -18,16 +18,6 @@
  *                                                                         *
  ***************************************************************************/
 """
-def name():
-    return "Invisible layers and groups"
-def description():
-    return "Make some layers and groups invisible in the QGIS Layer Tree (aka ToC)."
-def version():
-    return "Version 1.0"
-def icon():
-    return "hide.png"
-def qgisMinimumVersion():
-    return "2.0"
 def classFactory(iface):
-    from invisibleLayersAndGroups import InvisibleLayersAndGroups
+    from .invisibleLayersAndGroups import InvisibleLayersAndGroups
     return InvisibleLayersAndGroups(iface)

@@ -2,7 +2,7 @@
 /***************************************************************************
  InvisibleLayersAndGroups
                              A QGIS plugin
- Make some layers and groups invisible in the QGIS Layer Tree (aka ToC).
+ Make some layers and groups invisible in the QGIS Layer Tree (aka Layers panel).
                              -------------------
         begin                : 2017-03-01
         copyright            : (C) 2017 by German Carrillo, GeoTux
@@ -22,10 +22,11 @@ import os
 
 from qgis.core import ( QgsProject, QgsLayerTreeLayer, QgsLayerTreeGroup, 
                         QgsMapLayer )
-from PyQt4.QtGui import QIcon, QAction
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction
 
 # Initialize Qt resources from file resources.py
-import resources_rc
+from .resources_rc import *
 
 class InvisibleLayersAndGroups:
 
@@ -37,15 +38,15 @@ class InvisibleLayersAndGroups:
         QgsProject.instance().readProject.connect( self.readHiddenNodes )
 
     def initGui( self ):
-        self.actionHide = QAction( QIcon(":/plugins/InvisibleLayersAndGroups/hide.png"), u"Make selected layers and groups invisible", self.iface.mainWindow() )
+        self.actionHide = QAction( QIcon(":/plugins/InvisibleLayersAndGroups/hide.png"), "Make selected layers and groups invisible", self.iface.mainWindow() )
         self.actionHide.triggered.connect( self.runHide )
-        self.actionShow = QAction( QIcon(":/plugins/InvisibleLayersAndGroups/show.png"), u"Show invisible layers and groups", self.iface.mainWindow() )
+        self.actionShow = QAction( QIcon(":/plugins/InvisibleLayersAndGroups/show.png"), "Show invisible layers and groups", self.iface.mainWindow() )
         self.actionShow.triggered.connect( self.runShow )
 
         self.iface.addToolBarIcon( self.actionHide )
         self.iface.addToolBarIcon( self.actionShow )
-        self.iface.addPluginToMenu( u"&Invisible layers and groups", self.actionHide )
-        self.iface.addPluginToMenu( u"&Invisible layers and groups", self.actionShow )
+        self.iface.addPluginToMenu( "&Invisible layers and groups", self.actionHide )
+        self.iface.addPluginToMenu( "&Invisible layers and groups", self.actionShow )
 
     def unload( self ):
         QgsProject.instance().readProject.disconnect( self.readHiddenNodes )
@@ -86,7 +87,6 @@ class InvisibleLayersAndGroups:
     def readHiddenNodes( self ):
         """ SLOT """
         self.hideNodesByProperty( self.root )
-
 
     def hideLayer( self, mapLayer ):
         if isinstance( mapLayer, QgsMapLayer ):
