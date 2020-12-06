@@ -33,7 +33,7 @@ class InvisibleLayersAndGroups:
     def __init__( self, iface ):
         self.iface = iface
         self.ltv = self.iface.layerTreeView()
-        self.model = self.ltv.model()
+        self.model = self.ltv.layerTreeModel()
         self.root = QgsProject.instance().layerTreeRoot()
         QgsProject.instance().readProject.connect( self.readHiddenNodes )
 

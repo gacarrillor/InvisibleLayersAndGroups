@@ -2,7 +2,7 @@
 name=Invisible layers and groups
 description=Make some layers and groups invisible in the QGIS Layer Tree (aka Layers panel).
 about=Make some layers and groups invisible in the QGIS Layer Tree (aka Layers panel). E.g., lookup tables. Recommendation: Use it on top-level layers/groups, i.e., not on sublayers/subgroups.
-version=2.0
+version=2.1
 qgisMinimumVersion=3.4
 category=Plugins
 
@@ -10,6 +10,8 @@ author=Germán Carrillo (GeoTux)
 email=gcarrillo@linuxmail.org
 
 changelog=
+  [2.1] (20201206)
+   - Use layerTreeModel instead of model to avoid issues in QGIS 3.16.x.
   [2.0] (20190513)
    - Migrated to QGIS v3.
   [1.0] (20170303)
