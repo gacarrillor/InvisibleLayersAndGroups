@@ -20,10 +20,13 @@
 """
 import os
 
-from qgis.core import ( QgsProject, QgsLayerTreeLayer, QgsLayerTreeGroup, 
-                        QgsMapLayer )
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
+from qgis.core import (QgsProject,
+                       QgsLayerTreeLayer,
+                       QgsLayerTreeGroup,
+                       QgsMapLayer,
+                       Qgis)
 
 # Initialize Qt resources from file resources.py
 from .resources_rc import *
@@ -33,7 +36,6 @@ class InvisibleLayersAndGroups:
     def __init__( self, iface ):
         self.iface = iface
         self.ltv = self.iface.layerTreeView()
-        self.model = self.ltv.layerTreeModel()
         self.root = QgsProject.instance().layerTreeRoot()
         QgsProject.instance().readProject.connect( self.readHiddenNodes )
 
@@ -65,10 +67,16 @@ class InvisibleLayersAndGroups:
 
     def hideNode( self, node, bHide=True ):
         if type( node ) in ( QgsLayerTreeLayer, QgsLayerTreeGroup ):
-            index = self.model.node2index( node )
+            index = self._get_node_index(node)
             self.ltv.setRowHidden( index.row(), index.parent(), bHide )
             node.setCustomProperty( 'nodeHidden', 'true' if bHide else 'false' )
-            self.ltv.setCurrentIndex( self.model.node2index( self.root ) )
+            self.ltv.setCurrentIndex(self._get_node_index(self.root))
+
+    def _get_node_index(self, node):
+        if Qgis.QGIS_VERSION_INT >= 31800:
+            return self.ltv.node2index(node)  # Takes proxy model into account, introduced in QGIS 3.18
+        else:  # Older QGIS versions
+            return self.ltv.layerTreeModel().node2index(node)
 
     def showHiddenNodes( self, group ):
         for child in group.children():
